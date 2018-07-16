@@ -8,19 +8,38 @@ Plug 'scrooloose/nerdtree'
 Plug 'pangloss/vim-javascript'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'mkitt/tabline.vim'
+Plug 'tmhedberg/SimpylFold'
+Plug 'vim-syntastic/syntastic'
+Plug 'nvie/vim-flake8'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'ap/vim-buftabline'
 " Colors
 Plug 'altercation/vim-colors-solarized'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'jnurmine/zenburn'
+Plug 'dikiaap/minimalist'
+Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'kaicataldo/material.vim'
 """"""""""""""""""
 " Initialize plugin system
 call plug#end()
 
 " Color settings
+if (has("termguicolors"))
+  set termguicolors
+endif
+set t_Co=256
 syntax enable
-set background=light
-color solarized
-"color dracula
+set background=dark
+color material
+" material
+let g:material_theme_style='dark'
+let g:material_terminal_italics = 1
+
+
+" for python
+let python_hilight_all=1
+let g:indent_guides_enable_on_vim_startup = 1
 
 " Settings
 syntax on
@@ -35,6 +54,7 @@ set splitright
 set cursorline " hilight current line
 set clipboard=unnamed " us os clipboard
 set noswapfile
+set encoding=utf-8
 
 " Leader remap
 let mapleader=","
@@ -73,19 +93,15 @@ map <Leader>n :NERDTreeToggle<CR>
 map <Leader>cd :NERDTreeToggle %<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let g:NERDTreeWinSize=20
-let g:tablineclosebutton=1
 
 " airline settings
-let g:airline_theme = 'solarized'
-"let g:airline_powerline_fonts = 1 "adds arrows as separators
+let g:airline_theme = 'material'
 let g:airline#extensions#branch#enabled = 1 
 let g:airline_left_sep = ' 🕱 '
 let g:airline_right_sep = ' ❤ '
 let g:airline_section_warning = '' 
 let g:airline_section_y = '' 
-let g:airline_section_x = '' 
 set laststatus=2 " for airline
-let g:tablineclosebutton=1
 
 " some more mappings
 
@@ -116,6 +132,12 @@ map <C-l> <C-W>l
 " vim config reload and find
 nnoremap <M-r> :source ~/.vimrc<CR>
 nnoremap <M-f> :e ~/.vimrc<CR>
+
+" cd to current file directory
+nnoremap <leader>gh :cd %:p:h<CR>:pwd<CR>
+
+" run python code
+nnoremap <leader>rp :! python %<CR>
 
 set noruler
 set noshowmode
