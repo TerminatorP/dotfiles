@@ -1,6 +1,5 @@
 " Vim Plug
-call plug#begin('~/.vim/plugged')
-" Plugins
+call plug#begin('~/.vim/plugged') " Plugins
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'kien/ctrlp.vim'
@@ -11,15 +10,13 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tmhedberg/SimpylFold'
 Plug 'vim-syntastic/syntastic'
 Plug 'nvie/vim-flake8'
-Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ap/vim-buftabline'
+Plug 'sheerun/vim-polyglot'
 " Colors
 Plug 'altercation/vim-colors-solarized'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'joshdick/onedark.vim'
 Plug 'jnurmine/zenburn'
-Plug 'dikiaap/minimalist'
-Plug 'kristijanhusak/vim-hybrid-material'
-Plug 'kaicataldo/material.vim'
 """"""""""""""""""
 " Initialize plugin system
 call plug#end()
@@ -31,17 +28,14 @@ endif
 set t_Co=256
 syntax enable
 set background=dark
-color material
-" material
-let g:material_theme_style='dark'
-let g:material_terminal_italics = 1
-
+color onedark 
 
 " for python
 let python_hilight_all=1
 let g:indent_guides_enable_on_vim_startup = 1
 
 " Settings
+set nocp " make sure vim is not in compatible mode
 syntax on
 set number " show number
 set smartindent
@@ -94,8 +88,11 @@ map <Leader>cd :NERDTreeToggle %<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let g:NERDTreeWinSize=20
 
+" onedark settings
+let g:onedark_terminal_italics=1
+
 " airline settings
-let g:airline_theme = 'material'
+let g:airline_theme = 'onedark'
 let g:airline#extensions#branch#enabled = 1 
 let g:airline_left_sep = ' 🕱 '
 let g:airline_right_sep = ' ❤ '
