@@ -5,6 +5,7 @@
 " Vim Plug
 call plug#begin('~/.config/nvim/plugged') " Plugins
 Plug 'bling/vim-airline'
+Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
